@@ -50,7 +50,7 @@ public class GridTest {
     }
 
     @Test
-    public void testCalculateNextGeneration() {
+    public void testGetCurrentGeneration() {
         Grid grid = new Grid(5, 5);
         grid.prepareGeneration0();
         int currentGeneration = grid.getCurrentGeneration();
