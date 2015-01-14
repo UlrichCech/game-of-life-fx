@@ -76,4 +76,14 @@ public class Grid {
         }
         return sum;
     }
+
+    public void printGrid() {
+        for (int row = 0; row < getY(); row++) {
+            for (int col = 0; col < getX(); col++) {
+                Cell cell = grid[row][col];
+                System.out.print(cell.isAlive() ? "X " : ". ");
+            }
+            System.out.println();
+        }
+    }
 }

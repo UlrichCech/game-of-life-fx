@@ -42,4 +42,10 @@ public class GridTest {
         assertThat(grid.getNumberOfCellsDead(), greaterThan(0));
     }
 
+    @Test
+    public void testPrintGrid() {
+        Grid grid = new Grid(5, 5);
+        grid.prepareGeneration0();
+        grid.printGrid();
+    }
 }
