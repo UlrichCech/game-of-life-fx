@@ -93,7 +93,18 @@ public class Grid {
     }
 
     public void calculateNextGeneration() {
-        // TODO implement calculation
+        for (int row = 0; row < getY(); row++) {
+            for (int col = 0; col < getX(); col++) {
+                Cell cell = grid[row][col];
+                cell.calculateNextGeneration(this);
+            }
+        }
+        for (int row = 0; row < getY(); row++) {
+            for (int col = 0; col < getX(); col++) {
+                Cell cell = grid[row][col];
+                cell.progressGeneration();
+            }
+        }
         currentGeneration++;
     }
 }

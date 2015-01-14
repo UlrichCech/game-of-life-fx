@@ -11,8 +11,10 @@ public class Cell {
     private int x;
     private int y;
     private int generation;
+    private boolean nextAlive;
 
-    public Cell(int x, int y) {
+
+    public Cell(final int x, final int y) {
         if (x < 0 || y < 0) {
             throw new RuntimeException("X and Y cannot be negative.");
         }
@@ -41,7 +43,12 @@ public class Cell {
         return generation;
     }
 
+    public void calculateNextGeneration(final Grid grid) {
+        // nextAlive = ???
+    }
+
     public void progressGeneration() {
+        this.alive = nextAlive;
         generation++;
     }
 }
