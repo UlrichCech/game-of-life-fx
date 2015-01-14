@@ -4,6 +4,7 @@ import org.hamcrest.core.Is;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.*;
 
 /**
  * Test cases for @{@link Grid}
@@ -31,6 +32,14 @@ public class GridTest {
         Grid grid = new Grid(10, 10);
         grid.initialize();
         assertThat(grid.isInitialized(), Is.is(true));
+    }
+
+    @Test
+    public void testPrepareGeneration0() {
+        Grid grid = new Grid(10, 10);
+        grid.prepareGeneration0();
+        assertThat(grid.getNumberOfCellsAlive(), greaterThan(0));
+        assertThat(grid.getNumberOfCellsDead(), greaterThan(0));
     }
 
 }
