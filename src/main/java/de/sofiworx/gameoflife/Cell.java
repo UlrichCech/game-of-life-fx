@@ -15,6 +15,9 @@ public class Cell {
     private int generation;
 
     public Cell(int x, int y) {
+        if (x < 0 || y < 0) {
+            throw new RuntimeException("X and Y cannot be negative.");
+        }
         this.x = x;
         this.y = y;
     }
