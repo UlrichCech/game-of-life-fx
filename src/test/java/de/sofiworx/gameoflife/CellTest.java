@@ -13,8 +13,10 @@ import static org.junit.Assert.assertThat;
 public class CellTest {
 
     @Test
-    public void testCell() {
-        Cell cell = new Cell();
+    public void testCellInstantiation() {
+        Cell cell = new Cell(1, 1);
         assertThat(cell.isAlive(), Is.is(false));
+        assertThat(cell.getX(), Is.is(1));
+        assertThat(cell.getY(), Is.is(1));
     }
 }
