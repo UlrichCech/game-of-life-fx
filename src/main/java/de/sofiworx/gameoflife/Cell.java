@@ -1,7 +1,5 @@
 package de.sofiworx.gameoflife;
 
-import com.sun.tools.javac.code.Type;
-
 /**
  * Represents a single cell on the game-grid.
  *
