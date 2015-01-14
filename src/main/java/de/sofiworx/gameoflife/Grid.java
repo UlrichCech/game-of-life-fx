@@ -9,6 +9,8 @@ public class Grid {
 
     private int x;
     private int y;
+    private Cell[][] grid;
+    private boolean initialized;
 
     public Grid(int x, int y) {
         if (x < 0 || y < 0) {
@@ -28,5 +30,14 @@ public class Grid {
 
     public int getY() {
         return y;
+    }
+
+    public void initialize() {
+        grid = new Cell[getY()][getX()];
+        initialized = true;
+    }
+
+    public boolean isInitialized() {
+        return initialized;
     }
 }

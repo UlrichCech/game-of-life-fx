@@ -26,4 +26,11 @@ public class GridTest {
         } catch (RuntimeException rt) {}
     }
 
+    @Test
+    public void testInitializeGrid() {
+        Grid grid = new Grid(10, 10);
+        grid.initialize();
+        assertThat(grid.isInitialized(), Is.is(true));
+    }
+
 }
