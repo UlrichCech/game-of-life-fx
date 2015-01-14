@@ -13,6 +13,7 @@ public class Grid {
     private int y;
     private Cell[][] grid;
     private boolean initialized;
+    private int currentGeneration;
 
     public Grid(int x, int y) {
         if (x < 0 || y < 0) {
@@ -85,5 +86,9 @@ public class Grid {
             }
             System.out.println();
         }
+    }
+
+    public int getCurrentGeneration() {
+        return currentGeneration;
     }
 }

@@ -48,4 +48,12 @@ public class GridTest {
         grid.prepareGeneration0();
         grid.printGrid();
     }
+
+    @Test
+    public void testCalculateNextGeneration() {
+        Grid grid = new Grid(5, 5);
+        grid.prepareGeneration0();
+        int currentGeneration = grid.getCurrentGeneration();
+        assertThat(currentGeneration, is(0));
+    }
 }
