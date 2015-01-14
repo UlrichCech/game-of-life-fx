@@ -20,6 +20,11 @@ public class Cell {
         this.y = y;
     }
 
+    public Cell(int x, int y, boolean alive) {
+        this(x, y);
+        this.alive = alive;
+    }
+
     public boolean isAlive() {
         return alive;
     }

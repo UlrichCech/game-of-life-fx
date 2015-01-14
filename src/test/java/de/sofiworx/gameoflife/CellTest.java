@@ -27,6 +27,8 @@ public class CellTest {
             cell = new Cell(0, -1);
             fail("negative y-parameter not recognized.");
         } catch (RuntimeException rt) {}
+        cell = new Cell(1, 1, true);
+        assertThat(cell.isAlive(), Is.is(true));
     }
 
     @Test
