@@ -91,4 +91,9 @@ public class Grid {
     public int getCurrentGeneration() {
         return currentGeneration;
     }
+
+    public void calculateNextGeneration() {
+        // TODO implement calculation
+        currentGeneration++;
+    }
 }
