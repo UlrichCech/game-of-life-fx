@@ -19,4 +19,13 @@ public class CellTest {
         assertThat(cell.getX(), Is.is(1));
         assertThat(cell.getY(), Is.is(1));
     }
+
+    @Test
+    public void testGetGeneration() {
+        Cell cell = new Cell(1, 1);
+        assertThat(cell.getGeneration(), Is.is(0));
+        cell.progressGeneration();
+        assertThat(cell.getGeneration(), Is.is(1));
+    }
+
 }

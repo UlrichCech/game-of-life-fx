@@ -12,6 +12,7 @@ public class Cell {
     private boolean alive;
     private int x;
     private int y;
+    private int generation;
 
     public Cell(int x, int y) {
         this.x = x;
@@ -28,5 +29,13 @@ public class Cell {
 
     public int getY() {
         return y;
+    }
+
+    public int getGeneration() {
+        return generation;
+    }
+
+    public void progressGeneration() {
+        generation++;
     }
 }
