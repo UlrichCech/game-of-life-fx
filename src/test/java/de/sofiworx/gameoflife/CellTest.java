@@ -19,12 +19,14 @@ public class CellTest {
         assertThat(cell.isAlive(), Is.is(false));
         assertThat(cell.getX(), Is.is(1));
         assertThat(cell.getY(), Is.is(1));
+        assertThat(cell.getXi(), Is.is(0));
+        assertThat(cell.getYi(), Is.is(0));
         try {
-            cell = new Cell(-1, 0);
+            new Cell(-1, 0);
             fail("negative x-parameter not recognized.");
         } catch (RuntimeException rt) {}
         try {
-            cell = new Cell(0, -1);
+            new Cell(0, -1);
             fail("negative y-parameter not recognized.");
         } catch (RuntimeException rt) {}
         cell = new Cell(1, 1, true);

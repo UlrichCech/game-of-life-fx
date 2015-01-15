@@ -53,11 +53,24 @@ public class Cell {
     }
 
     public void progressGeneration() {
-        this.alive = nextAlive;
+        this.alive = isNextAlive();
         generation++;
     }
 
     private void setNextAlive(final boolean nextAlive) {
         this.nextAlive = nextAlive;
     }
+
+    public boolean isNextAlive() {
+        return nextAlive;
+    }
+
+    int getXi() {
+        return getX() - 1;
+    }
+
+    int getYi() {
+        return getY() - 1;
+    }
+
 }
