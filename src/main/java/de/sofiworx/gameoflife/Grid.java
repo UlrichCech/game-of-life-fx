@@ -92,6 +92,10 @@ public class Grid {
         return currentGeneration;
     }
 
+    public Cell getCell(final int col, final int row) {
+        return grid[row-1][col-1];
+    }
+
     public void calculateNextGeneration() {
         for (int row = 0; row < getY(); row++) {
             for (int col = 0; col < getX(); col++) {

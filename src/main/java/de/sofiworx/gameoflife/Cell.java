@@ -12,6 +12,7 @@ public class Cell {
     private int y;
     private int generation;
     private boolean nextAlive;
+    private GameRules rules = GameRules.getInstance();
 
 
     public Cell(final int x, final int y) {
@@ -44,11 +45,19 @@ public class Cell {
     }
 
     public void calculateNextGeneration(final Grid grid) {
-        // nextAlive = ???
+        setNextAlive(rules.isCellAliveInNextGeneration(isAlive(), calculateAmountAliveNeighbors(grid)));
+    }
+
+    int calculateAmountAliveNeighbors(final Grid grid) {
+        return 0; // TODO calculate
     }
 
     public void progressGeneration() {
         this.alive = nextAlive;
         generation++;
+    }
+
+    private void setNextAlive(final boolean nextAlive) {
+        this.nextAlive = nextAlive;
     }
 }

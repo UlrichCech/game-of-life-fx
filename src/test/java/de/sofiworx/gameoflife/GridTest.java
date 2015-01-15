@@ -66,4 +66,12 @@ public class GridTest {
         grid.calculateNextGeneration();
         assertThat(grid.getCurrentGeneration(), is(generation0 + 1));
     }
+
+    @Test
+    public void testGetCell() {
+        Grid grid = new Grid(5, 5);
+        grid.prepareGeneration0();
+        Cell cell = grid.getCell(1, 1);
+        assertThat(cell.getGeneration(), is(0));
+    }
 }
