@@ -40,6 +40,20 @@ public class Grid {
         initialized = true;
     }
 
+    void initialize(boolean[]... rows) {
+        if (rows == null || rows.length == 0) {
+            initialize();
+            return;
+        }
+        grid = new Cell[getY()][getX()];
+        for (int row = 0; row < rows.length; row++) {
+            grid[row] = new Cell[getY()];
+            for (int col = 0; col < rows[row].length; col++) {
+                grid[row][col] = new Cell(col, row, rows[row][col]);
+            }
+        }
+    }
+
     public boolean isInitialized() {
         return initialized;
     }
@@ -92,8 +106,8 @@ public class Grid {
         return currentGeneration;
     }
 
-    public Cell getCell(final int col, final int row) {
-        return grid[row-1][col-1];
+    public Cell getCell(final int colIndex, final int rowIndex) {
+        return grid[rowIndex][colIndex];
     }
 
     public void calculateNextGeneration() {

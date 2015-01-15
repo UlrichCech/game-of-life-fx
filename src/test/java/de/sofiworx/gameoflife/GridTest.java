@@ -32,6 +32,20 @@ public class GridTest {
         Grid grid = new Grid(10, 10);
         grid.initialize();
         assertThat(grid.isInitialized(), Is.is(true));
+
+        grid = new Grid(3, 3);
+        grid.initialize(new boolean[]{false, false, false},
+                new boolean[]{false, true, false},
+                new boolean[]{false, false, true});
+        assertThat(grid.getCell(0, 0).isAlive(), is(false));
+        assertThat(grid.getCell(1, 0).isAlive(), is(false));
+        assertThat(grid.getCell(2, 0).isAlive(), is(false));
+        assertThat(grid.getCell(0, 1).isAlive(), is(false));
+        assertThat(grid.getCell(1, 1).isAlive(), is(true));
+        assertThat(grid.getCell(2, 1).isAlive(), is(false));
+        assertThat(grid.getCell(0, 2).isAlive(), is(false));
+        assertThat(grid.getCell(1, 2).isAlive(), is(false));
+        assertThat(grid.getCell(2, 2).isAlive(), is(true));
     }
 
     @Test
