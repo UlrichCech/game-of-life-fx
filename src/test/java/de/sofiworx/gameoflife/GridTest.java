@@ -91,4 +91,18 @@ public class GridTest {
         Cell cell = grid.getCell(1, 1);
         assertThat(cell.getGeneration(), is(0));
     }
+
+    @Test
+    public void testPrintTwoGenerations() {
+        Grid grid = new Grid(5, 5);
+        grid.prepareGeneration0();
+        System.out.println("Generation: " + grid.getCurrentGeneration());
+        grid.printGrid();
+        System.out.println();
+
+        grid.calculateNextGeneration();
+        System.out.println("Generation: " + grid.getCurrentGeneration());
+        grid.printGrid();
+    }
+
 }

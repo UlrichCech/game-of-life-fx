@@ -13,7 +13,7 @@ public class Cell {
     private int y;
     private int generation;
     private boolean nextAlive;
-    private GameRules rules = GameRules.getInstance();
+    private final GameRules rules = GameRules.getInstance();
 
 
     public Cell(Grid grid, final int x, final int y) {
