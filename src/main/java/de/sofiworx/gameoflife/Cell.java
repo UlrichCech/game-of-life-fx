@@ -7,6 +7,7 @@ package de.sofiworx.gameoflife;
  */
 public class Cell {
 
+    private Grid grid;
     private boolean alive;
     private int x;
     private int y;
@@ -15,16 +16,17 @@ public class Cell {
     private GameRules rules = GameRules.getInstance();
 
 
-    public Cell(final int x, final int y) {
+    public Cell(Grid grid, final int x, final int y) {
         if (x < 0 || y < 0) {
             throw new RuntimeException("X and Y cannot be negative.");
         }
+        this.grid = grid;
         this.x = x;
         this.y = y;
     }
 
-    public Cell(int x, int y, boolean alive) {
-        this(x, y);
+    public Cell(Grid grid, int x, int y, boolean alive) {
+        this(grid, x, y);
         this.alive = alive;
     }
 
@@ -44,12 +46,26 @@ public class Cell {
         return generation;
     }
 
-    public void calculateNextGeneration(final Grid grid) {
-        setNextAlive(rules.isCellAliveInNextGeneration(isAlive(), calculateAmountAliveNeighbors(grid)));
+    public void calculateNextGeneration() {
+        setNextAlive(rules.isCellAliveInNextGeneration(isAlive(), calculateAmountAliveNeighbors()));
     }
 
-    int calculateAmountAliveNeighbors(final Grid grid) {
-        return 0; // TODO calculate
+    int calculateAmountAliveNeighbors() {
+        int sum = 0;
+        for (int row = -1; row < 2; row++) {
+            int y = getY() + row;
+            if ((y >= 0) && (y < grid.getY())) { // check top and bottom border
+                for (int col = -1; col < 2; col++) {
+                    int x = getX() + col;
+                    if (x >= 0 && x < grid.getX()) { // check left and right border
+                        if (!(x == getX() && (y == getY()))) {
+                            sum += grid.getCell(x, y).isAlive() ? 1 : 0;
+                        }
+                    }
+                }
+            }
+        }
+        return sum;
     }
 
     public void progressGeneration() {
@@ -64,13 +80,4 @@ public class Cell {
     public boolean isNextAlive() {
         return nextAlive;
     }
-
-    int getXi() {
-        return getX() - 1;
-    }
-
-    int getYi() {
-        return getY() - 1;
-    }
-
 }

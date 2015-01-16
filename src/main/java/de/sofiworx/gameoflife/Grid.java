@@ -49,7 +49,7 @@ public class Grid {
         for (int row = 0; row < rows.length; row++) {
             grid[row] = new Cell[getY()];
             for (int col = 0; col < rows[row].length; col++) {
-                grid[row][col] = new Cell(col, row, rows[row][col]);
+                grid[row][col] = new Cell(this, col, row, rows[row][col]);
             }
         }
     }
@@ -65,7 +65,7 @@ public class Grid {
         Random random = new Random();
         for (int row = 0; row < getY(); row++) {
             for (int col = 0; col < getX(); col++) {
-                grid[row][col] = new Cell(col, row, random.nextBoolean());
+                grid[row][col] = new Cell(this, col, row, random.nextBoolean());
             }
         }
     }
@@ -114,7 +114,7 @@ public class Grid {
         for (int row = 0; row < getY(); row++) {
             for (int col = 0; col < getX(); col++) {
                 Cell cell = grid[row][col];
-                cell.calculateNextGeneration(this);
+                cell.calculateNextGeneration();
             }
         }
         for (int row = 0; row < getY(); row++) {

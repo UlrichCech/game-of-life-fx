@@ -20,13 +20,10 @@ public class GameRules {
     public boolean isCellAliveInNextGeneration(final boolean currentAlive, final int amountAliveNeighbors) {
         if ((amountAliveNeighbors == 1) || (amountAliveNeighbors > 3)) {
             return false;
-        }
-        if (amountAliveNeighbors == 3) {
+        } else if (amountAliveNeighbors == 3) {
             return true;
-        }
-        if (amountAliveNeighbors == 2) {
+        } else {
             return currentAlive;
         }
-        return currentAlive;
     }
 }

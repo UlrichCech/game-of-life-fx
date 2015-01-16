@@ -34,6 +34,9 @@ public class GridTest {
         assertThat(grid.isInitialized(), Is.is(true));
 
         grid = new Grid(3, 3);
+        grid.initialize(null);
+        assertThat(grid.getCell(0, 0), nullValue());
+
         grid.initialize(new boolean[]{false, false, false},
                 new boolean[]{false, true, false},
                 new boolean[]{false, false, true});
