@@ -9,34 +9,34 @@ import java.util.Random;
  */
 public class Grid {
 
-    private int x;
-    private int y;
+    private int dimensionX;
+    private int dimensionY;
     private Cell[][] grid;
     private boolean initialized;
     private int currentGeneration;
 
-    public Grid(int x, int y) {
-        if (x < 0 || y < 0) {
-            throw new RuntimeException("X and Y parameters cannot be negative.");
+    public Grid(int dimensionX, int dimensionY) {
+        if (dimensionX < 0 || dimensionY < 0) {
+            throw new RuntimeException("dimensionX- and dimensionY-parameters cannot be negative.");
         }
-        this.x = x;
-        this.y = y;
+        this.dimensionX = dimensionX;
+        this.dimensionY = dimensionY;
     }
 
     public int getNumberOfCells() {
-        return x * y;
+        return dimensionX * dimensionY;
     }
 
-    public int getX() {
-        return x;
+    public int getDimensionX() {
+        return dimensionX;
     }
 
-    public int getY() {
-        return y;
+    public int getDimensionY() {
+        return dimensionY;
     }
 
     public void initialize() {
-        grid = new Cell[getY()][getX()];
+        grid = new Cell[getDimensionY()][getDimensionX()];
         initialized = true;
     }
 
@@ -45,9 +45,9 @@ public class Grid {
             initialize();
             return;
         }
-        grid = new Cell[getY()][getX()];
+        grid = new Cell[getDimensionY()][getDimensionX()];
         for (int row = 0; row < rows.length; row++) {
-            grid[row] = new Cell[getY()];
+            grid[row] = new Cell[getDimensionY()];
             for (int col = 0; col < rows[row].length; col++) {
                 grid[row][col] = new Cell(this, col, row, rows[row][col]);
             }
@@ -63,8 +63,8 @@ public class Grid {
             initialize();
         }
         Random random = new Random();
-        for (int row = 0; row < getY(); row++) {
-            for (int col = 0; col < getX(); col++) {
+        for (int row = 0; row < getDimensionY(); row++) {
+            for (int col = 0; col < getDimensionX(); col++) {
                 grid[row][col] = new Cell(this, col, row, random.nextBoolean());
             }
         }
@@ -72,8 +72,8 @@ public class Grid {
 
     public int getNumberOfCellsAlive() {
         int sum = 0;
-        for (int row = 0; row < getY(); row++) {
-            for (int col = 0; col < getX(); col++) {
+        for (int row = 0; row < getDimensionY(); row++) {
+            for (int col = 0; col < getDimensionX(); col++) {
                 Cell cell = grid[row][col];
                 sum += cell.isAlive() ? 1 : 0;
             }
@@ -83,8 +83,8 @@ public class Grid {
 
     public int getNumberOfCellsDead() {
         int sum = 0;
-        for (int row = 0; row < getY(); row++) {
-            for (int col = 0; col < getX(); col++) {
+        for (int row = 0; row < getDimensionY(); row++) {
+            for (int col = 0; col < getDimensionX(); col++) {
                 Cell cell = grid[row][col];
                 sum += cell.isAlive() ? 0 : 1;
             }
@@ -93,8 +93,8 @@ public class Grid {
     }
 
     public void printGrid() {
-        for (int row = 0; row < getY(); row++) {
-            for (int col = 0; col < getX(); col++) {
+        for (int row = 0; row < getDimensionY(); row++) {
+            for (int col = 0; col < getDimensionX(); col++) {
                 Cell cell = grid[row][col];
                 System.out.print(cell.isAlive() ? "X " : ". ");
             }
@@ -111,14 +111,14 @@ public class Grid {
     }
 
     public void calculateNextGeneration() {
-        for (int row = 0; row < getY(); row++) {
-            for (int col = 0; col < getX(); col++) {
+        for (int row = 0; row < getDimensionY(); row++) {
+            for (int col = 0; col < getDimensionX(); col++) {
                 Cell cell = grid[row][col];
                 cell.calculateNextGeneration();
             }
         }
-        for (int row = 0; row < getY(); row++) {
-            for (int col = 0; col < getX(); col++) {
+        for (int row = 0; row < getDimensionY(); row++) {
+            for (int col = 0; col < getDimensionX(); col++) {
                 Cell cell = grid[row][col];
                 cell.progressGeneration();
             }

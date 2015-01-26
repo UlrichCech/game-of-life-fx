@@ -54,10 +54,10 @@ public class Cell {
         int sum = 0;
         for (int row = -1; row < 2; row++) {
             int y = getY() + row;
-            if ((y >= 0) && (y < grid.getY())) { // check top and bottom border
+            if ((y >= 0) && (y < grid.getDimensionY())) { // check top and bottom border
                 for (int col = -1; col < 2; col++) {
                     int x = getX() + col;
-                    if (x >= 0 && x < grid.getX()) { // check left and right border
+                    if (x >= 0 && x < grid.getDimensionX()) { // check left and right border
                         if (!(x == getX() && (y == getY()))) {
                             sum += grid.getCell(x, y).isAlive() ? 1 : 0;
                         }
