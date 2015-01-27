@@ -20,20 +20,17 @@ public class GridTest {
         try {
             new Grid(-10, 10);
             fail("negative X parameter not recognized.");
-        } catch (RuntimeException rt) {}
+        } catch (RuntimeException ignore) {}
         try {
             new Grid(10, -10);
             fail("negative X parameter not recognized.");
-        } catch (RuntimeException rt) {}
+        } catch (RuntimeException ignore) {}
     }
 
     @Test
     public void testInitializeGrid() {
         Grid grid = new Grid(10, 10);
         grid.initialize();
-        assertThat(grid.isInitialized(), Is.is(true));
-
-        grid.initialize(null);
         assertThat(grid.isInitialized(), Is.is(true));
 
         grid = new Grid(3, 3);

@@ -1,6 +1,5 @@
 package de.sofiworx.gameoflife;
 
-import org.hamcrest.core.Is;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -23,11 +22,11 @@ public class CellTest {
         try {
             new Cell(null, -1, 0);
             fail("negative x-parameter not recognized.");
-        } catch (RuntimeException rt) {}
+        } catch (RuntimeException ignore) {}
         try {
             new Cell(null, 0, -1);
             fail("negative y-parameter not recognized.");
-        } catch (RuntimeException rt) {}
+        } catch (RuntimeException ignore) {}
         cell = new Cell(null, 1, 1, true);
         assertThat(cell.isAlive(), is(true));
     }

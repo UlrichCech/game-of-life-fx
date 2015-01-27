@@ -7,7 +7,7 @@ import java.util.Random;
  *
  * @author Ulrich Cech
  */
-public class Grid {
+class Grid {
 
     private int dimensionX;
     private int dimensionY;
@@ -41,7 +41,7 @@ public class Grid {
     }
 
     void initialize(boolean[]... rows) {
-        if (rows == null || rows.length == 0) {
+        if (rows == null || rows[0].length == 0) {
             initialize();
             return;
         }
