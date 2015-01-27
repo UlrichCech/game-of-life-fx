@@ -17,6 +17,7 @@ public class GameRulesTest {
     @Test
     public void isAliveInNextGeneration() {
         GameRules rules = GameRules.getInstance();
+        assertThat(rules.isCellAliveInNextGeneration(true, 0), Is.is(false));
         assertThat(rules.isCellAliveInNextGeneration(true, 1), Is.is(false));
         assertThat(rules.isCellAliveInNextGeneration(true, 2), Is.is(true));
         assertThat(rules.isCellAliveInNextGeneration(true, 3), Is.is(true));
