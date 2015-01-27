@@ -33,6 +33,9 @@ public class GridTest {
         grid.initialize();
         assertThat(grid.isInitialized(), Is.is(true));
 
+        grid.initialize(null);
+        assertThat(grid.isInitialized(), Is.is(true));
+
         grid = new Grid(3, 3);
         grid.initialize(new boolean[0]);
         assertThat(grid.getCell(0, 0), nullValue());
@@ -70,7 +73,7 @@ public class GridTest {
     public void testGetCurrentGeneration() {
         Grid grid = new Grid(5, 5);
         grid.prepareGeneration0();
-        int currentGeneration = grid.getCurrentGeneration();
+        int currentGeneration = grid.getCurrentGenerationNumber();
         assertThat(currentGeneration, is(0));
     }
 
@@ -79,9 +82,9 @@ public class GridTest {
     public void testCalculateNextGeneration() {
         Grid grid = new Grid(5, 5);
         grid.prepareGeneration0();
-        int generation0 = grid.getCurrentGeneration();
+        int generation0 = grid.getCurrentGenerationNumber();
         grid.calculateNextGeneration();
-        assertThat(grid.getCurrentGeneration(), is(generation0 + 1));
+        assertThat(grid.getCurrentGenerationNumber(), is(generation0 + 1));
     }
 
     @Test
@@ -96,12 +99,12 @@ public class GridTest {
     public void testPrintTwoGenerations() {
         Grid grid = new Grid(5, 5);
         grid.prepareGeneration0();
-        System.out.println("Generation: " + grid.getCurrentGeneration());
+        System.out.println("Generation: " + grid.getCurrentGenerationNumber());
         grid.printGrid();
         System.out.println();
 
         grid.calculateNextGeneration();
-        System.out.println("Generation: " + grid.getCurrentGeneration());
+        System.out.println("Generation: " + grid.getCurrentGenerationNumber());
         grid.printGrid();
     }
 

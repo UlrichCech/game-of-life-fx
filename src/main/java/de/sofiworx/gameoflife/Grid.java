@@ -13,7 +13,7 @@ public class Grid {
     private int dimensionY;
     private Cell[][] grid;
     private boolean initialized;
-    private int currentGeneration;
+    private int currentGenerationNumber;
 
     public Grid(int dimensionX, int dimensionY) {
         if (dimensionX < 0 || dimensionY < 0) {
@@ -102,8 +102,8 @@ public class Grid {
         }
     }
 
-    public int getCurrentGeneration() {
-        return currentGeneration;
+    public int getCurrentGenerationNumber() {
+        return currentGenerationNumber;
     }
 
     public Cell getCell(final int colIndex, final int rowIndex) {
@@ -123,6 +123,6 @@ public class Grid {
                 cell.progressGeneration();
             }
         }
-        currentGeneration++;
+        currentGenerationNumber++;
     }
 }
